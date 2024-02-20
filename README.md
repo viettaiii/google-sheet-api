@@ -39,7 +39,7 @@ def main():
     sheet_api.build_service("sheets", "v4")
 main()
 ```
-> Sau khi chạy xong thì nó sẽ tạo ra một file `token.json`
+> Sau khi chạy xong sẽ xuất hiện một file `token.json`
 
 ## Các hàm tiện ích
 - Các hàm tiện ích bằng cách sử dụng sheet_api.[Name Function]
