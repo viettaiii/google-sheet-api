@@ -21,25 +21,26 @@
     pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
     ```
 ## Cài đặt vào dự án
-```python
-# Code example
+- 
+    ```python
+    # Code example
+    from handle_data import GoogleSheetManager
 
-from handle_data import GoogleSheetManager
+    SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly", 'https://www.googleapis.com/auth/spreadsheets']
 
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly", 'https://www.googleapis.com/auth/spreadsheets']
+    def main():
+        # file credentials.json đã setup trước đó.
+        creds_file = "credentials.json"
 
-def main():
-    # file credentials.json đã setup trước đó.
-    creds_file = "credentials.json"
+        # Khởi tạo một google sheet manager
+        sheet_api = GoogleSheetManager(creds_file, SCOPES)
 
-    # Khởi tạo một google sheet manager
-    sheet_api = GoogleSheetManager(creds_file, SCOPES)
-
-    # Build service và xác thực người dùng.
-    sheet_api.build_service("sheets", "v4")
-main()
-```
-> Sau khi chạy xong sẽ xuất hiện một file `token.json`
+        # Build service và xác thực người dùng.
+        sheet_api.build_service("sheets", "v4")
+    main()
+    ```
+- 
+    > Sau khi chạy xong sẽ xuất hiện một file `token.json`
 
 ## Các hàm tiện ích
 - Các hàm tiện ích bằng cách sử dụng sheet_api.[Function Name]
@@ -49,22 +50,22 @@ main()
     ```
 
 
-| Function Name | Parameters | Description | Return |
-|----------|----------|----------|----------|
-| build_service   | api_name(str)<span style="color:red">\*</span> <br/> version_name(str)<span style="color:red">\*</span>| Build service và xác thực người dùng  | service | 
-| import_data_to_google_sheet   |  data(list[list])<span style="color:red">\*</span><br/> format_cel(dict)<span style="color:red">\*</span><br/> format_range(dict)<span style="color:red">\*</span>| `Import` dữ liệu đến google drive  | None | 
-| create_spreadsheet | title (str)<span style="color:red">\*</span> | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
-| create_worksheet | spreadsheet_id (str)<span style="color:red">\*</span><br/>title (str)<span style="color:red">\*</span> | Tạo mới một worksheet strong spreadsheet | worksheet_id (str) |
-| connect_spreadsheet | spreadsheet_id (str)<span style="color:red">\*</span> | Kết nối đến Spreadsheet | Spreadsheet|
-| get_worksheet_by_title |spreadsheet_id(str)<span style="color:red">\*</span> <br> title(str)<span style="color:red">\*</span> | get worksheet bằng title | Worksheet|
-| get_values_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span> | Get values dựa trên range | List|
-| write_data_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span><br>data(list[list])<span style="color:red">\*</span> | Write data to google sheet | None|
-| format_header | spreadsheet_id(str)<span style="color:red">\*</span><br>  cell_format(dict)<span style="color:red">\*</span>, format_range(dict)<span style="color:red">\*</span> | Format cell | None|
-| merge_cells | spreadsheet_id(str)<span style="color:red">\*</span><br>  merge_range(dict)<span style="color:red">\*</span><br/> merge_type(str) | Format cell | None|
+    | Function Name | Parameters | Description | Return |
+    |----------|----------|----------|----------|
+    | build_service   | api_name(str)<span style="color:red">\*</span> <br/> version_name(str)<span style="color:red">\*</span>| Build service và xác thực người dùng  | service | 
+    | import_data_to_google_sheet   |  data(list[list])<span style="color:red">\*</span><br/> format_cel(dict)<span style="color:red">\*</span><br/> format_range(dict)<span style="color:red">\*</span>| `Import` dữ liệu đến google drive  | None | 
+    | create_spreadsheet | title (str)<span style="color:red">\*</span> | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
+    | create_worksheet | spreadsheet_id (str)<span style="color:red">\*</span><br/>title (str)<span style="color:red">\*</span> | Tạo mới một worksheet strong spreadsheet | worksheet_id (str) |
+    | connect_spreadsheet | spreadsheet_id (str)<span style="color:red">\*</span> | Kết nối đến Spreadsheet | Spreadsheet|
+    | get_worksheet_by_title |spreadsheet_id(str)<span style="color:red">\*</span> <br> title(str)<span style="color:red">\*</span> | get worksheet bằng title | Worksheet|
+    | get_values_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span> | Get values dựa trên range | List|
+    | write_data_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span><br>data(list[list])<span style="color:red">\*</span> | Write data to google sheet | None|
+    | format_header | spreadsheet_id(str)<span style="color:red">\*</span><br>  cell_format(dict)<span style="color:red">\*</span>, format_range(dict)<span style="color:red">\*</span> | Format cell | None|
+    | merge_cells | spreadsheet_id(str)<span style="color:red">\*</span><br>  merge_range(dict)<span style="color:red">\*</span><br/> merge_type(str) | Format cell | None|
 
 >>> Chi tiết về format_range, format_cell tham khảo link: [Format](https://developers.google.com/sheets/api/samples/formatting?hl=vi)
-
-```python
+- 
+    ```python
     # Code Example
 
     # Dữ liệu
@@ -110,7 +111,7 @@ main()
     # Thực hiện import dữ liệu đến google sheet
     sheet_api.import_data_to_google_sheet(data, format_cell, format_range)
 
-```
+    ```
 
 ## Tài liệu thảm khảo
 - https://developers.google.com/sheets/api/samples/formatting?hl=vi
