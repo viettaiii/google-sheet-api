@@ -43,9 +43,15 @@ main()
 
 ## Các hàm tiện ích
 - Các hàm tiện ích bằng cách sử dụng sheet_api.[Function Name]
+    ```python
+    # Biến `sheet_api` là biến chúng ta đã bằng dòng code sau
+    sheet_api = GoogleSheetManager(creds_file, SCOPES)
+    ```
+
 
 | Function Name | Parameters | Description | Return |
 |----------|----------|----------|----------|
+| build_service   | api_name(str)<span style="color:red">\*</span> <br/> version_name(str)<span style="color:red">\*</span>| Build service và xác thực người dùng  | service | 
 | import_data_to_google_sheet   |  data(list[list])<span style="color:red">\*</span><br/> format_cel(dict)<span style="color:red">\*</span><br/> format_range(dict)<span style="color:red">\*</span>| `Import` dữ liệu đến google drive  | None | 
 | create_spreadsheet | title (str)<span style="color:red">\*</span> | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
 | create_worksheet | spreadsheet_id (str)<span style="color:red">\*</span><br/>title (str)<span style="color:red">\*</span> | Tạo mới một worksheet strong spreadsheet | worksheet_id (str) |
