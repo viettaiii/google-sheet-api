@@ -42,9 +42,9 @@ main()
 > Sau khi chạy xong sẽ xuất hiện một file `token.json`
 
 ## Các hàm tiện ích
-- Các hàm tiện ích bằng cách sử dụng sheet_api.[Name Function]
+- Các hàm tiện ích bằng cách sử dụng sheet_api.[Function Name]
 
-| Name Function | Parameters | Description | Return |
+| Function Name | Parameters | Description | Return |
 |----------|----------|----------|----------|
 | import_data_to_google_sheet   |  data(list[list])<span style="color:red">\*</span><br/> format_cel(dict)<span style="color:red">\*</span><br/> format_range(dict)<span style="color:red">\*</span>| `Import` dữ liệu đến google drive  | None | 
 | create_spreadsheet | title (str)<span style="color:red">\*</span> | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
