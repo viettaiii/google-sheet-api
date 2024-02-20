@@ -46,14 +46,14 @@ main()
 
 | Name Function | Parameters | Description | Return |
 |----------|----------|----------|----------|
-| import_data_to_google_sheet   |  data(list[list])\*<br/> format_cel(dict)\*<br/> format_range(dict)\*| `Import` dữ liệu đến google drive  | None | 
-| create_spreadsheet | title (str)\* | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
-| connect_spreadsheet | spreadsheet_id (str)\* | Kết nối đến Spreadsheet | Spreadsheet|
-| get_worksheet_by_title |spreadsheet_id(str)\* <br> title(str)\* | get worksheet bằng title | Worksheet|
-| get_values_range |spreadsheet_id(str)\* <br> range_name(dict)\* | Get values dựa trên range | List|
-| write_data_range |spreadsheet_id(str)\* <br> range_name(dict)\*<br>data(list[list])\* | Write data to google sheet | None|
-| format_header | spreadsheet_id(str)\*<br>  cell_format(dict)\*, format_range(dict)\* | Format cell | None|
-| merge_cells | spreadsheet_id(str)\*<br>  merge_range(dict)\*<br/> merge_type(str) | Format cell | None|
+| import_data_to_google_sheet   |  data(list[list])<span style="color:red">\*</span><br/> format_cel(dict)<span style="color:red">\*</span><br/> format_range(dict)<span style="color:red">\*</span>| `Import` dữ liệu đến google drive  | None | 
+| create_spreadsheet | title (str)<span style="color:red">\*</span> | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
+| connect_spreadsheet | spreadsheet_id (str)<span style="color:red">\*</span> | Kết nối đến Spreadsheet | Spreadsheet|
+| get_worksheet_by_title |spreadsheet_id(str)<span style="color:red">\*</span> <br> title(str)<span style="color:red">\*</span> | get worksheet bằng title | Worksheet|
+| get_values_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span> | Get values dựa trên range | List|
+| write_data_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span><br>data(list[list])<span style="color:red">\*</span> | Write data to google sheet | None|
+| format_header | spreadsheet_id(str)<span style="color:red">\*</span><br>  cell_format(dict)<span style="color:red">\*</span>, format_range(dict)<span style="color:red">\*</span> | Format cell | None|
+| merge_cells | spreadsheet_id(str)<span style="color:red">\*</span><br>  merge_range(dict)<span style="color:red">\*</span><br/> merge_type(str) | Format cell | None|
 
 >>> Chi tiết về format_range, format_cell tham khảo link: [Format](https://developers.google.com/sheets/api/samples/formatting?hl=vi)
 
