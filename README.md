@@ -48,6 +48,7 @@ main()
 |----------|----------|----------|----------|
 | import_data_to_google_sheet   |  data(list[list])<span style="color:red">\*</span><br/> format_cel(dict)<span style="color:red">\*</span><br/> format_range(dict)<span style="color:red">\*</span>| `Import` dữ liệu đến google drive  | None | 
 | create_spreadsheet | title (str)<span style="color:red">\*</span> | Tạo mới một spreadsheet đến google sheet | Spreadsheet |
+| create_worksheet | spreadsheet_id (str)<span style="color:red">\*</span><br/>title (str)<span style="color:red">\*</span> | Tạo mới một worksheet strong spreadsheet | worksheet_id (str) |
 | connect_spreadsheet | spreadsheet_id (str)<span style="color:red">\*</span> | Kết nối đến Spreadsheet | Spreadsheet|
 | get_worksheet_by_title |spreadsheet_id(str)<span style="color:red">\*</span> <br> title(str)<span style="color:red">\*</span> | get worksheet bằng title | Worksheet|
 | get_values_range |spreadsheet_id(str)<span style="color:red">\*</span> <br> range_name(dict)<span style="color:red">\*</span> | Get values dựa trên range | List|

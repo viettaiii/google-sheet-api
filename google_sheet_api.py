@@ -9,6 +9,13 @@ class GoogleSheetApi(AuthenticateGoogleApi):
         super().__init__(creds_file, scopes)
 
     def build_service(self, api_name, api_version):
+        """
+            Create a Google sheet service
+        Args:
+            api_name (str): Name api 
+            api_version (str): version
+        Returns: service
+        """
         try:
             if self.creds is None:
                 self.authenticate()
@@ -126,7 +133,7 @@ class GoogleSheetApi(AuthenticateGoogleApi):
             spreadsheet_id (_type_): _description_
             title (_type_): _description_
         Returns:
-            _type_: _description_
+            str : worksheet id
         """
         try:
             # Tạo request để thêm một sheet mới vào spreadsheet
