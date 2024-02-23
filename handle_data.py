@@ -91,84 +91,72 @@ class GoogleSheetManager(GoogleSheetApi):
                 'merge_type': 'MERGE_COLUMNS',
             },
             {
-                'cells': [
-                    {
-                        'col_name': [["Resolve hour estimate"]],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  0 + start_row_index,
-                            "endRowIndex":  1 + end_row_index,
-                            "startColumnIndex":  4 + start_col_index,
-                            "endColumnIndex":   6 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ROWS',
-                    },
-                    {
-                        'col_name': [["Time", "Man+month"]],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  1 + start_row_index,
-                            "endRowIndex":  2 + end_row_index,
-                            "startColumnIndex":  4 + start_col_index,
-                            "endColumnIndex":   5 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ROWS',
-                    }
-                ]
-            },
-            {
-                'cells': [
-                    {
-                        'col_name': [["Resolve hour actual"]],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  0 + start_row_index,
-                            "endRowIndex":  1 + end_row_index,
-                            "startColumnIndex":  6 + start_col_index,
-                            "endColumnIndex":   8 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ROWS',
-                    },
-                    {
-                        'col_name': [["Time", "Man+month"]],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  1 + start_row_index,
-                            "endRowIndex":  2 + end_row_index,
-                            "startColumnIndex":  6 + start_col_index,
-                            "endColumnIndex":   7 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ROWS',
-                    }
-                ]
-            },
-            {
-                'cells': [
-                    {
-                        'col_name': [["Resolve hour Diff"]],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex": 0 + start_row_index,
-                            "endRowIndex": 1 + end_row_index,
-                            "startColumnIndex": 8 + start_col_index,
-                            "endColumnIndex": 10 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ROWS',
-                    },
-                    {
-                        'col_name': [["Time", "Man-month"]],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex": 1 + start_row_index,
-                            "endRowIndex": 2 + end_row_index,
-                            "startColumnIndex": 8 + start_col_index,
-                            "endColumnIndex": 9 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ROWS',
-                    }
-                ]
-            },
 
+                'col_name': [["Resolve hour estimate"]],
+                'merge_range': {
+                    "sheetId": sheet_id,
+                    "startRowIndex":  0 + start_row_index,
+                    "endRowIndex":  1 + end_row_index,
+                    "startColumnIndex":  4 + start_col_index,
+                    "endColumnIndex":   6 + end_col_index
+                },
+                'merge_type': 'MERGE_ROWS',
+            },
+            {
+                'col_name': [["Time", "Man+month"]],
+                'merge_range': {
+                    "sheetId": sheet_id,
+                    "startRowIndex":  1 + start_row_index,
+                    "endRowIndex":  2 + end_row_index,
+                    "startColumnIndex":  4 + start_col_index,
+                    "endColumnIndex":   5 + end_col_index
+                },
+                'merge_type': 'MERGE_ROWS',
+            },
+            {
+                'col_name': [["Resolve hour actual"]],
+                'merge_range': {
+                    "sheetId": sheet_id,
+                    "startRowIndex":  0 + start_row_index,
+                    "endRowIndex":  1 + end_row_index,
+                    "startColumnIndex":  6 + start_col_index,
+                    "endColumnIndex":   8 + end_col_index
+                },
+                'merge_type': 'MERGE_ROWS',
+            },
+            {
+                'col_name': [["Time", "Man+month"]],
+                'merge_range': {
+                    "sheetId": sheet_id,
+                    "startRowIndex":  1 + start_row_index,
+                    "endRowIndex":  2 + end_row_index,
+                    "startColumnIndex":  6 + start_col_index,
+                    "endColumnIndex":   7 + end_col_index
+                },
+                'merge_type': 'MERGE_ROWS',
+            },
+            {
+                'col_name': [["Resolve hour Diff"]],
+                'merge_range': {
+                    "sheetId": sheet_id,
+                    "startRowIndex": 0 + start_row_index,
+                    "endRowIndex": 1 + end_row_index,
+                    "startColumnIndex": 8 + start_col_index,
+                    "endColumnIndex": 10 + end_col_index
+                },
+                'merge_type': 'MERGE_ROWS',
+            },
+            {
+                'col_name': [["Time", "Man-month"]],
+                'merge_range': {
+                    "sheetId": sheet_id,
+                    "startRowIndex": 1 + start_row_index,
+                    "endRowIndex": 2 + end_row_index,
+                    "startColumnIndex": 8 + start_col_index,
+                    "endColumnIndex": 9 + end_col_index
+                },
+                'merge_type': 'MERGE_ROWS',
+            }
         ]
 
         # cells_body = [
@@ -374,160 +362,216 @@ class GoogleSheetManager(GoogleSheetApi):
         # # Create cell header
 
         # cells_body = [
-            {
-                'teams': [
-                    {
-                        'col_name': [['Team #1']],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  2 + start_row_index,
-                            "endRowIndex":  7 + end_row_index,
-                            "startColumnIndex":  0 + start_col_index,
-                            "endColumnIndex":   1 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ALL',
-                    },
-                    {
-                        'col_name': [['Team #2']],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  2 + start_row_index,
-                            "endRowIndex":  7 + end_row_index,
-                            "startColumnIndex":  0 + start_col_index,
-                            "endColumnIndex":   1 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ALL',
-                    },
-                    {
-                        'col_name': [['Team #3']],
-                        'merge_range': {
-                            "sheetId": sheet_id,
-                            "startRowIndex":  2 + start_row_index,
-                            "endRowIndex":  7 + end_row_index,
-                            "startColumnIndex":  0 + start_col_index,
-                            "endColumnIndex":   1 + end_col_index
-                        },
-                        'merge_type': 'MERGE_ALL',
-                    },
-                ]
-            },
-            {
-                'members': [
-                    {
-                        'totals': [
-                            {
-                                'col_name': [['Total']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  2 + start_row_index,
-                                    "endRowIndex":  3 + end_row_index,
-                                    "startColumnIndex":  1 + start_col_index,
-                                    "endColumnIndex":   3 + end_col_index
-                                },
-                                'merge_type': 'MERGE_ALL',
-                            },
-                            {
-                                'col_name': [['Total']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  2 + start_row_index,
-                                    "endRowIndex":  3 + end_row_index,
-                                    "startColumnIndex":  1 + start_col_index,
-                                    "endColumnIndex":   3 + end_col_index
-                                },
-                                'merge_type': 'MERGE_ALL',
-                            },
-                            {
-                                'col_name': [['Total']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  2 + start_row_index,
-                                    "endRowIndex":  3 + end_row_index,
-                                    "startColumnIndex":  1 + start_col_index,
-                                    "endColumnIndex":   3 + end_col_index
-                                },
-                                'merge_type': 'MERGE_ALL',
-                            },
-                        ]
-                    },
-                    {
-                        'teams': [
-                            {
-                                'col_name': [['Team']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  3 + start_row_index,
-                                    "endRowIndex":  7 + end_row_index,
-                                    "startColumnIndex":  1 + start_col_index,
-                                    "endColumnIndex":   2 + end_col_index
-                                },
-                                'merge_type': 'MERGE_ALL',
-                            },
-                            {
-                                'col_name': [['Team']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  3 + start_row_index,
-                                    "endRowIndex":  7 + end_row_index,
-                                    "startColumnIndex":  1 + start_col_index,
-                                    "endColumnIndex":   2 + end_col_index
-                                },
-                                'merge_type': 'MERGE_ALL',
-                            },
-                            {
-                                'col_name': [['Team']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  3 + start_row_index,
-                                    "endRowIndex":  7 + end_row_index,
-                                    "startColumnIndex":  1 + start_col_index,
-                                    "endColumnIndex":   2 + end_col_index
-                                },
-                                'merge_type': 'MERGE_ALL',
-                            },
-                        ]
-                    },
-                    {
-                        'names': [
-                            {
-                                'col_name': [['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  3 + start_row_index,
-                                    "endRowIndex":  7 + end_row_index,
-                                    "startColumnIndex":  2 + start_col_index,
-                                    "endColumnIndex":   3 + end_col_index
-                                },
-                                'merge_type': None,
-                            },
-                            {
-                                'col_name': [['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  3 + start_row_index,
-                                    "endRowIndex":  7 + end_row_index,
-                                    "startColumnIndex":  2 + start_col_index,
-                                    "endColumnIndex":   3 + end_col_index
-                                },
-                                'merge_type': None,
-                            },
-                            {
-                                'col_name': [['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ']],
-                                'merge_range': {
-                                    "sheetId": sheet_id,
-                                    "startRowIndex":  3 + start_row_index,
-                                    "endRowIndex":  7 + end_row_index,
-                                    "startColumnIndex":  2 + start_col_index,
-                                    "endColumnIndex":   3 + end_col_index
-                                },
-                                'merge_type': None,
-                            }
-                        ]
-                    },
+        #     {
+        #         'teams': [
+        #             {
+        #                 'col_name': [['Team #1']],
+        #                 'merge_range': {
+        #                     "sheetId": sheet_id,
+        #                     "startRowIndex":  2 + start_row_index,
+        #                     "endRowIndex":  7 + end_row_index,
+        #                     "startColumnIndex":  0 + start_col_index,
+        #                     "endColumnIndex":   1 + end_col_index
+        #                 },
+        #                 'merge_type': 'MERGE_ALL',
+        #             },
+        #             {
+        #                 'col_name': [['Team #2']],
+        #                 'merge_range': {
+        #                     "sheetId": sheet_id,
+        #                     "startRowIndex":  2 + start_row_index,
+        #                     "endRowIndex":  7 + end_row_index,
+        #                     "startColumnIndex":  0 + start_col_index,
+        #                     "endColumnIndex":   1 + end_col_index
+        #                 },
+        #                 'merge_type': 'MERGE_ALL',
+        #             },
+        #             {
+        #                 'col_name': [['Team #3']],
+        #                 'merge_range': {
+        #                     "sheetId": sheet_id,
+        #                     "startRowIndex":  2 + start_row_index,
+        #                     "endRowIndex":  7 + end_row_index,
+        #                     "startColumnIndex":  0 + start_col_index,
+        #                     "endColumnIndex":   1 + end_col_index
+        #                 },
+        #                 'merge_type': 'MERGE_ALL',
+        #             },
+        #         ]
+        #     },
+        #     {
+        #         'members': [
+        #             {
+        #                 'totals': [
+        #                     {
+        #                         'col_name': [['Total']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  2 + start_row_index,
+        #                             "endRowIndex":  3 + end_row_index,
+        #                             "startColumnIndex":  1 + start_col_index,
+        #                             "endColumnIndex":   3 + end_col_index
+        #                         },
+        #                         'merge_type': 'MERGE_ALL',
+        #                     },
+        #                     {
+        #                         'col_name': [['Total']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  2 + start_row_index,
+        #                             "endRowIndex":  3 + end_row_index,
+        #                             "startColumnIndex":  1 + start_col_index,
+        #                             "endColumnIndex":   3 + end_col_index
+        #                         },
+        #                         'merge_type': 'MERGE_ALL',
+        #                     },
+        #                     {
+        #                         'col_name': [['Total']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  2 + start_row_index,
+        #                             "endRowIndex":  3 + end_row_index,
+        #                             "startColumnIndex":  1 + start_col_index,
+        #                             "endColumnIndex":   3 + end_col_index
+        #                         },
+        #                         'merge_type': 'MERGE_ALL',
+        #                     },
+        #                 ]
+        #             },
+        #             {
+        #                 'teams': [
+        #                     {
+        #                         'col_name': [['Team']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  3 + start_row_index,
+        #                             "endRowIndex":  7 + end_row_index,
+        #                             "startColumnIndex":  1 + start_col_index,
+        #                             "endColumnIndex":   2 + end_col_index
+        #                         },
+        #                         'merge_type': 'MERGE_ALL',
+        #                     },
+        #                     {
+        #                         'col_name': [['Team']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  3 + start_row_index,
+        #                             "endRowIndex":  7 + end_row_index,
+        #                             "startColumnIndex":  1 + start_col_index,
+        #                             "endColumnIndex":   2 + end_col_index
+        #                         },
+        #                         'merge_type': 'MERGE_ALL',
+        #                     },
+        #                     {
+        #                         'col_name': [['Team']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  3 + start_row_index,
+        #                             "endRowIndex":  7 + end_row_index,
+        #                             "startColumnIndex":  1 + start_col_index,
+        #                             "endColumnIndex":   2 + end_col_index
+        #                         },
+        #                         'merge_type': 'MERGE_ALL',
+        #                     },
+        #                 ]
+        #             },
+        #             {
+        #                 'names': [
+        #                     {
+        #                         'col_name': [['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  3 + start_row_index,
+        #                             "endRowIndex":  7 + end_row_index,
+        #                             "startColumnIndex":  2 + start_col_index,
+        #                             "endColumnIndex":   3 + end_col_index
+        #                         },
+        #                         'merge_type': None,
+        #                     },
+        #                     {
+        #                         'col_name': [['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  3 + start_row_index,
+        #                             "endRowIndex":  7 + end_row_index,
+        #                             "startColumnIndex":  2 + start_col_index,
+        #                             "endColumnIndex":   3 + end_col_index
+        #                         },
+        #                         'merge_type': None,
+        #                     },
+        #                     {
+        #                         'col_name': [['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ'], ['NhuLTQ']],
+        #                         'merge_range': {
+        #                             "sheetId": sheet_id,
+        #                             "startRowIndex":  3 + start_row_index,
+        #                             "endRowIndex":  7 + end_row_index,
+        #                             "startColumnIndex":  2 + start_col_index,
+        #                             "endColumnIndex":   3 + end_col_index
+        #                         },
+        #                         'merge_type': None,
+        #                     }
+        #                 ]
+        #             },
 
-                ]
-            },
+        #         ]
+        #     },
 
+        # ]
+
+        cells_body = [
+            {
+                'team_name': "Team #1",
+                'member_tasks': [
+                    {
+                        'member_name': 'NhuLTQ',
+                        'number_of_tasks': 80,
+                        'resolve_hour_estimate': {
+                            'time': 1,
+                            'man_month': 2,
+                        },
+                        'resolve_hour_actual': {
+                            'time': 3,
+                            'man_month': 4,
+                        },
+                        'diff': {
+                            'time': 5,
+                            'man_month': 6,
+                        }
+                    },
+                    {
+                        'member_name': 'NhuLTQ',
+                        'number_of_tasks': 80,
+                        'resolve_hour_estimate': {
+                            'time': 106,
+                            'man_month': 106,
+                        },
+                        'resolve_hour_actual': {
+                            'time': 106,
+                            'man_month': 106,
+                        },
+                        'diff': {
+                            'time': 106,
+                            'man_month': 106,
+                        }
+                    },
+                    {
+                        'member_name': 'NhuLTQ',
+                        'number_of_tasks': 80,
+                        'resolve_hour_estimate': {
+                            'time': 106,
+                            'man_month': 106,
+                        },
+                        'resolve_hour_actual': {
+                            'time': 106,
+                            'man_month': 106,
+                        },
+                        'diff': {
+                            'time': 106,
+                            'man_month': 106,
+                        }
+                    }
+                ],
+            }
         ]
 
         def write_and_merge(value):
@@ -540,7 +584,7 @@ class GoogleSheetManager(GoogleSheetApi):
                 print('range_name', range_name)
             self.write_data_range(spreadsheet_id, range_name=range_name, data=value['col_name'])
 
-        ## create cells header
+        # create cells header
         for value in cells_header:
             if value.get('cells', None) is not None:
                 for cell in value['cells']:
@@ -579,3 +623,68 @@ class GoogleSheetManager(GoogleSheetApi):
         #             # create names members
         #             if member.get('names', None) is not None:
         #                 handle_cell(values=member['names'])
+
+        # start_row_index = 2
+        # end_row_index = 0
+        # start_col_index = 0
+        # end_col_index = 0
+        # for item in cells_body:
+        #     pass
+
+        # Step 1: Create a new spreadsheet
+           # Create spreadsheet
+        spreadsheet_title = "BPO Report"
+        spreadsheet = self.create_spreadsheet(spreadsheet_title)
+        spreadsheet_id = spreadsheet.get('spreadsheetId')
+
+        # Create worksheet
+        worksheet_title = 'Sheet1'
+        sheet_id = self.create_worksheet(spreadsheet_id, worksheet_title)
+
+        # Step 2: Prepare the dummy data
+        data = [
+            ['Team', 'Member', 'Number of tasks', 'Resolve hour estimate', '', '', 'Resolve hour actual', '', '', 'Diff', ''],
+            ['Team', 'Member', 'Number of tasks', 'Time', 'Man-month', 'Time', 'Man-month', 'Time', 'Man-month'],
+            ['Team #1', '', '', '', '', '', '', '', '', '', ''],
+            ['Team', 'Total', 237, 361.2, 3.01, 400.4, 3.34, -39.2, -0.33],
+            ['', 'NhuLTQ', 81, 106.4, 0.89, 107.85, 0.90, -1.45, -0.01],
+            # ... more dummy data rows as per your screenshot
+        ]
+
+        # Step 3: Write data to the spreadsheet
+        range_name = f"'Sheet1'!A1:K{len(data)}"
+        self.write_data_range(spreadsheet_id, range_name, data)
+
+        # Step 4: Merge cells as per the structure in the screenshot
+        merge_ranges = [
+            # Merging 'Team' cells vertically
+            {
+                'sheetId': sheet_id,
+                'startRowIndex': 2,
+                'endRowIndex': 6,
+                'startColumnIndex': 0,
+                'endColumnIndex': 1
+            },
+            # ... more merge ranges as needed
+        ]
+
+        for merge_range in merge_ranges:
+            self.merge_cells(spreadsheet_id, merge_range)
+
+        # Step 5: Apply formatting
+        header_format = {
+            "backgroundColor": {"red": 0.9, "green": 0.9, "blue": 1.0},
+            "horizontalAlignment": "CENTER",
+            "textFormat": {"fontSize": 10, "bold": True}
+        }
+
+        # Apply formatting to the header range
+        self.format_header(spreadsheet_id, header_format, {
+            'sheetId': sheet_id,
+            'startRowIndex': 1,
+            'endRowIndex': 2,
+            'startColumnIndex': 0,
+            'endColumnIndex': 10
+        })
+
+        print(f"Spreadsheet with ID {spreadsheet_id} created and formatted successfully.")
