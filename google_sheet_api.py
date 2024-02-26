@@ -215,6 +215,7 @@ class GoogleSheetApi(AuthenticateGoogleApi):
                     "mergeType": merge_type
                 }
             },
+            
             response = self.service.spreadsheets().batchUpdate(
                 spreadsheetId=spreadsheet_id, body={'requests': [requests]}).execute()
             return None
@@ -222,12 +223,21 @@ class GoogleSheetApi(AuthenticateGoogleApi):
             print(f"An error occurred: {error}")
             return None
 
-    def merge_cell_and_write_data(self, spreadsheet_id, merge_range,  range_name, data, merge_type=None):
-        for row in data:
-            for i in range(0, len(row)):
-                if i == merge_range['startColumnIndex']:
-                    for j in range(2, merge_range['endColumnIndex']):
-                        row[i] = row[i] + ' ' + row[j]
-                    break
-        self.merge_cells(spreadsheet_id, merge_range)
-        self.write_data_range(spreadsheet_id, range_name, data)
+    # def merge_cell_and_write_data(self, spreadsheet_id, merge_range,  range_name, data, merge_type=None):
+        # for row in data:
+        #     for i in range(0, len(row)):
+        #         if i == merge_range['startColumnIndex']:
+        #             for j in range(2, merge_range['endColumnIndex']):
+        #                 row[i] = row[i] + ' ' + row[j]
+        #             break
+        # self.merge_cells(spreadsheet_id, merge_range)
+        # self.write_data_range(spreadsheet_id, range_name, data)
+
+    def merge_cell(self, spreadsheet_id, requests):
+        try:
+            response = self.service.spreadsheets().batchUpdate(
+                spreadsheetId=spreadsheet_id, body={'requests': [requests]}).execute()
+            return response
+        except HttpError as error:
+            print(f"An error occurred: {error}")
+            return None

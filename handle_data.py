@@ -518,7 +518,7 @@ class GoogleSheetManager(GoogleSheetApi):
 
         # ]
 
-        cells_body = [
+        data_body = [
             {
                 'team_name': "Team #1",
                 'member_tasks': [
@@ -586,11 +586,7 @@ class GoogleSheetManager(GoogleSheetApi):
 
         # create cells header
         for value in cells_header:
-            if value.get('cells', None) is not None:
-                for cell in value['cells']:
-                    write_and_merge(cell)
-            else:
-                write_and_merge(value)
+            write_and_merge(value)
 
         # create cell body
 
@@ -688,3 +684,131 @@ class GoogleSheetManager(GoogleSheetApi):
         })
 
         print(f"Spreadsheet with ID {spreadsheet_id} created and formatted successfully.")
+
+    def create_table_for_bpo(self, data_json, start_char=65, start_row_index=0, end_row_index=0, start_col_index=0, end_col_index=0):
+        # Create spreadsheet
+        spreadsheet = self.create_spreadsheet("New Spreadsheet")
+        spreadsheet_id = spreadsheet.get('spreadsheetId')
+
+        # # Create worksheet
+        # worksheet_title = 'New Worksheet'
+        # sheet_id = self.create_worksheet(spreadsheet_id, worksheet_title)
+        sheet_id = 0
+        merge_requests = []
+
+        # Data
+        data = [
+            ['Team', 'Member', '', 'Number of tasks', 'Resolve hour estimate', '', 'Resolve hour actual', '', 'Diff'],
+            ['', '', '', '', 'Time', 'Man-month', 'Time', 'Man-month', 'Time', 'Man-month'],
+
+        ]
+
+        def generate_merge_request(start_row_index, end_row_index, start_column_index, end_column_index, mergeType='MERGE_ALL'):
+            """
+                Generate a merge request
+            Args:
+                start_row_index (int): start row index
+                end_row_index (int_): end row index
+                start_column_index (int): start column index
+                end_column_index (int): end column index
+                mergeType (str, optional): Defaults to 'MERGE_ALL'.
+
+            Returns:
+                dict : merge request 
+            """
+
+            # default merge request
+            merge_request = {
+                'mergeCells': {
+                    'range': {
+                        'sheetId': 0,
+                        'startRowIndex': start_row_index,
+                        'endRowIndex': end_row_index,
+                        'startColumnIndex': start_column_index,
+                        'endColumnIndex': end_column_index
+                    },
+                    'mergeType': mergeType
+                }
+            }
+            return merge_request
+
+        def create_merge_request_and_data(data_json):
+            """
+                Create merge request and data
+            Args:
+                data_json (list): Data from server
+            """
+
+            # Apple merge cell header
+
+            merge_requests.append(generate_merge_request(0, 2, 0, 1))
+            merge_requests.append(generate_merge_request(0, 2, 1, 3))
+            merge_requests.append(generate_merge_request(0, 2, 3, 4))
+            merge_requests.append(generate_merge_request(0, 1, 4, 6))
+
+            merge_requests.append(generate_merge_request(0, 1, 6, 8, mergeType='MERGE_ROWS'))
+            merge_requests.append(generate_merge_request(0, 1, 8, 10, mergeType='MERGE_ROWS'))
+
+            # Handle create merge request and data
+            row_index = 2
+            for item in data_json:
+                length_row = item['quantity_member']
+                length_col = 0
+                list_data = []
+                merge_requests.append(generate_merge_request(row_index, row_index + 1 + length_row, length_col, length_col + 1))
+                list_data.append(item['team_name'])
+                list_data.append('total')
+                list_data.extend([''] * 8)
+                data.append(list_data)
+                list_data = []
+                length_col += 1
+
+                for member in item['task_members']:
+                    list_data.append('')
+                    list_data.append('Team')
+                    list_data.append(member['name_member'])
+                    list_data.append(member['number_of_tasks'])
+                    list_data.append(member['resolve_hour_estimate']['time'])
+                    list_data.append(member['resolve_hour_estimate']['man_month'])
+                    list_data.append(member['resolve_hour_actual']['time'])
+                    list_data.append(member['resolve_hour_actual']['man_month'])
+                    list_data.append(member['diff']['time'])
+                    list_data.append(member['diff']['man_month'])
+                    data.append(list_data)
+                    list_data = []
+                merge_requests.append(generate_merge_request(row_index, row_index + 1, length_col, length_col + 2, mergeType='MERGE_ROWS'))
+
+                merge_requests.append(generate_merge_request(row_index + 1, row_index + 1 + length_row, length_col, length_col + 1))
+                row_index += length_row + 1
+
+        # Call fc to create merge request and create
+        create_merge_request_and_data(data_json)
+
+        len_col = len(data[0])
+        len_row = len(data)
+        merge_requests.append(generate_merge_request(len_row, len_row + 1, 0, 3))
+        list_data = []
+        list_data.append('total')
+        list_data.extend([''] * 7)
+        data.append(list_data)
+        len_row = len(data)
+        range_name = f"{chr(65)}1:{chr(65+len_col)}{len_row}"
+        self.merge_cell(spreadsheet_id, requests=merge_requests)
+        self.write_data_range(spreadsheet_id, range_name=range_name, data=data)
+
+
+"""
+  - Để merges các cells thì cần phải có các `mergeCells`
+  - Nếu mà đã bảng table bộ cố định thì việc định nghĩa các mergeCells rất là dễ
+  - Nếu bảng table phụ thuộc vào data để có thể render ra table tương ứng.
+
+---> Vậy câu hỏi đặt ra
+  - Em nên dựa vào data để tạo ra các object `mergeCells` và dùng list `object mergeCells` để `format table` trước rồi sau đó mới tìm cách để write data to table đó.
+    Ex:
+        Ví dụ data có 6 phần tử thì tùy vào đó sẽ tạo ra 6 mergeCell tương ứng và gọi fc để `format table` và sau đó sẽ tìm cách để format data để viết vào table đó.
+
+  - Hay em nên làm 2 việc này cùng một lúc format and write data cùng lúc.
+    Ngay sau khi em format em sẽ write data xuống ngay cái ô mà em đã format luôn.
+    Ex: 
+        Em vẫn tạo `mergeCells` và kem theo data cần ghi vào `mergeCells` đó.
+"""
